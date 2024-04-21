@@ -10,7 +10,7 @@ api_hash=input("Введите api_hash: ")
 app = Client("my_bot", api_id, api_hash)
 
 # Список нецензурных слов для примера
-bad_words = ["хуй","бля","пизд","сука","ебать","ебан","ёб","хуи","хуя","хуе","ебл","залупа","нецензурное_слово"]
+bad_words = ["хуй","бля","пизд","сука","ебать","ебан","ёб","хуи","хуя","хуе","ебл","залупа","ёпта","епта","нецензурное_слово"]
 
 # Хранение информации о пользователях
 user_data = {}
@@ -37,6 +37,7 @@ async def check_message(client, message):
         # Создаем объект ChatPermissions с нужными правами
                 
         # Предполагаем, что client и message уже определены
+        # print(message.chat.id, user_id)
         await client.restrict_chat_member(message.chat.id, user_id, ChatPermissions(can_send_messages=False), until_date)
         user_data[user_id]["count"] = 0
         await message.reply("Вы были ограничены в доступе к чату на 12 часов за чрезмерное использование нецензурной лексики.")
